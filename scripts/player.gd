@@ -1,6 +1,10 @@
 extends AnimatedSprite2D
 
 @export var move_speed := 1
+@export var threshold := 0.1
+@export var follow_speed := 100
+
+var move := Vector2.ZERO
 
 
 func get_move_axes() -> Vector2:
@@ -18,13 +22,20 @@ func get_move_axes() -> Vector2:
 	return move_axes.normalized()
 
 
-func animate_move(move: Vector2):
-	if abs(move.x) >= 0.01:
+func animate_move():
+	if abs(move.x) >= threshold:
 		play("walk_h")
-	elif abs(move.y) >= 0.01:
+	elif abs(move.y) >= threshold:
 		play("walk_v")
 	else:
 		play("idle")
+
+
+func move_player(delta: float):
+	var target := get_move_axes() * move_speed
+	var t = delta * follow_speed
+	move = move.lerp(target, t)
+	position += move
 
 
 func _ready() -> void:
@@ -32,6 +43,8 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	var move := get_move_axes() * move_speed
-	position += move
-	animate_move(move)
+	animate_move()
+
+
+func _physics_process(delta: float) -> void:
+	move_player(delta)
