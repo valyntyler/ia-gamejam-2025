@@ -25,6 +25,10 @@ func get_move_axes() -> Vector2:
 func animate_move():
 	if abs(move.x) >= threshold:
 		play("walk_h")
+		if move.x > 0:
+			flip_h = true
+		else:
+			flip_h = false
 	elif abs(move.y) >= threshold:
 		play("walk_v")
 	else:
