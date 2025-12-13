@@ -1,6 +1,4 @@
-extends Node2D
-
-@onready var player_sprite: AnimatedSprite2D = $PlayerSprite
+extends AnimatedSprite2D
 
 @export var move_speed := 1
 
@@ -20,9 +18,20 @@ func get_move_axes() -> Vector2:
 	return move_axes.normalized()
 
 
+func animate_move(move: Vector2):
+	if abs(move.x) >= 0.01:
+		play("walk_h")
+	elif abs(move.y) >= 0.01:
+		play("walk_v")
+	else:
+		play("idle")
+
+
 func _ready() -> void:
 	pass
 
 
 func _process(_delta: float) -> void:
-	position += get_move_axes() * move_speed
+	var move := get_move_axes() * move_speed
+	position += move
+	animate_move(move)
