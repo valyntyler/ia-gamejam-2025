@@ -1,13 +1,20 @@
 @tool
-extends CanvasLayer
+class_name SlideShow
+extends Node
 
+@export var lock := true
 @export var index: int:
 	set(value):
-		value = max(0, value)
-		index = value % get_child_count()
+		var count = get_child_count()
+		if count == 0:
+			return
+		index = (value + count) % count
 
 
-func _process(_delta: float) -> void:
+func lock_slides():
+	if !lock:
+		return
+
 	var children = get_children()
 	var count = get_child_count()
 	for i in range(0, count):
@@ -16,3 +23,12 @@ func _process(_delta: float) -> void:
 			child.visible = true
 		else:
 			child.visible = false
+
+
+func _process(_delta: float) -> void:
+	lock_slides()
+
+
+func _unhandled_key_input(event):
+	if event.is_pressed():
+		index += 1
