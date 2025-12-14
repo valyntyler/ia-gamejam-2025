@@ -1,7 +1,7 @@
 extends AnimatedSprite2D
 
 @export var move_speed := 1
-@export var threshold := 0.1
+@export var threshold := 0.5
 @export var follow_speed := 100
 
 var move := Vector2.ZERO
