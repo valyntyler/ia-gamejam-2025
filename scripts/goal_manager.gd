@@ -1,32 +1,23 @@
 extends Node2D
 
-@onready var vignette: ColorRect = %Vignette
+@onready var vignette: Vignette = %Vignette
 
+@export var player: Node2D
 @export var goal: Node2D
-@export var max_distance: float
 
+var max_distance: float
+var darkness := 0.0
 
-func fade_in():
-	if (
-		Input.is_action_pressed("move_left")
-		|| Input.is_action_pressed("move_right")
-		|| Input.is_action_pressed("move_up")
-		|| Input.is_action_pressed("move_down")
-	):
-		pass
-		# lerp_target = 1
+var distance: float:
+	get():
+		return player.position.distance_to(goal.position)
 
 
 func _ready() -> void:
-	# lerp_perc = 0.0
-	max_distance = position.distance_to(goal.position)
+	max_distance = distance
 
 
-func _process(delta: float) -> void:
-	# lerp_target = position.distance_to(goal.position) / max_distance
-	pass
-
-
-func _unhandled_key_input(event):
-	if event.is_pressed():
-		pass
+func _process(_delta: float) -> void:
+	var normalized_distance = distance / max_distance
+	vignette.outer_radius = 1.5 - normalized_distance - darkness
+	darkness += (Time.get_ticks_msec() / 1000.0) / 100_000
