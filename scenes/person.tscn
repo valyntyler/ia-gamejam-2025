@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqhf3dvdsiu2c"]
+
+[ext_resource type="Texture2D" uid="uid://b6ikrvcgxv6wj" path="res://assets/player/standing/standing-back.png" id="1_c62xm"]
+
+[node name="Person" type="Node2D"]
+
+[node name="StandingBack" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_c62xm")
