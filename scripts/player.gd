@@ -35,7 +35,7 @@ func move_player(delta: float):
 
 
 func _ready() -> void:
-	pass
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 
 func _process(_delta: float) -> void:
