@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnnki3ov6dlky"]
+[gd_scene load_steps=7 format=3 uid="uid://dnnki3ov6dlky"]
 
 [ext_resource type="FontFile" uid="uid://cxxb8gnb52j4u" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_4ignj"]
 [ext_resource type="Script" uid="uid://dvgsxfkkgo7b2" path="res://scripts/title.gd" id="1_b3w7a"]
 [ext_resource type="PackedScene" uid="uid://dkebfbd2ypc5t" path="res://scenes/vignette.tscn" id="1_p6dhs"]
 [ext_resource type="Script" uid="uid://4lpq6dg6wibn" path="res://scripts/slideshow.gd" id="1_wosw1"]
-[ext_resource type="Script" uid="uid://dnaydh2db7vqt" path="res://scripts/vignette.gd" id="2_pyl7j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wosw1"]
 font = ExtResource("1_4ignj")
@@ -19,11 +18,8 @@ script = ExtResource("1_b3w7a")
 [node name="PostProcessing" type="CanvasLayer" parent="."]
 
 [node name="Vignette" parent="PostProcessing" instance=ExtResource("1_p6dhs")]
-script = ExtResource("2_pyl7j")
-inner_target = 0.0
-outer_target = 1.0
-outer_radius = 1.0
-inner_radius = 0.0
+unique_name_in_owner = true
+outer_radius = 0.9999999999999997
 
 [node name="Black" type="ColorRect" parent="."]
 anchors_preset = 15

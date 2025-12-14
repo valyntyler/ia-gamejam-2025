@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=4 uid="uid://c5sr50exfcxxh"]
+[gd_scene load_steps=9 format=4 uid="uid://c5sr50exfcxxh"]
 
 [ext_resource type="PackedScene" uid="uid://dkebfbd2ypc5t" path="res://scenes/vignette.tscn" id="1_71j4m"]
+[ext_resource type="Script" uid="uid://beff5khvnucdp" path="res://scripts/world.gd" id="1_qfnet"]
 [ext_resource type="PackedScene" uid="uid://caq1bd8cq7edg" path="res://scenes/player.tscn" id="1_rwgxs"]
 [ext_resource type="Texture2D" uid="uid://ms1qn355236l" path="res://assets/icon.svg" id="2_4wyf3"]
 [ext_resource type="Texture2D" uid="uid://cecrjy21ac6aa" path="res://assets/floor.png" id="2_k0juu"]
@@ -16,11 +17,13 @@ tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_4wyf3")
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_qfnet")
 
 [node name="PostProcessing" type="CanvasLayer" parent="."]
 
 [node name="Vignette" parent="PostProcessing" instance=ExtResource("1_71j4m")]
 unique_name_in_owner = true
+outer_radius = 1.0
 
 [node name="Background" type="ParallaxBackground" parent="."]
 

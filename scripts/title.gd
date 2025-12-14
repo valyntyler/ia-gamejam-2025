@@ -2,8 +2,8 @@ extends CanvasLayer
 
 const WORLD = preload("uid://c5sr50exfcxxh")
 
-@onready var vignette: ColorRect = $PostProcessing/Vignette
 @onready var slideshow: Slideshow = $Slideshow
+@onready var vignette: Vignette = %Vignette
 
 
 func intro():

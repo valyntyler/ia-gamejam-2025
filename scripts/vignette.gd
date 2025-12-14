@@ -1,4 +1,5 @@
 @tool
+class_name Vignette
 extends ColorRect
 
 @export var inner_target: float = 0.0
