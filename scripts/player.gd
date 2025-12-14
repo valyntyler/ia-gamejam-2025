@@ -31,8 +31,10 @@ func animate_move():
 			anim.flip_h = true
 		else:
 			anim.flip_h = false
-	elif abs(move.y) >= threshold:
-		anim.play("walk_v")
+	elif move.y >= threshold:
+		anim.play("walk_front")
+	elif move.y <= -threshold:
+		anim.play("walk_back")
 	else:
 		anim.play("idle")
 
