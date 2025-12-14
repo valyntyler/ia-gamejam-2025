@@ -22,8 +22,8 @@ script = ExtResource("1_b3w7a")
 script = ExtResource("2_pyl7j")
 inner_target = 0.0
 outer_target = 1.0
-outer_radius = 0.9912068842079461
-inner_radius = -0.018484193255446466
+outer_radius = 1.0
+inner_radius = 0.0
 
 [node name="Black" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -31,7 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0, 0, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="Slideshow" type="Node" parent="."]
 script = ExtResource("1_wosw1")
