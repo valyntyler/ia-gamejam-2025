@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://c5sr50exfcxxh"]
+[gd_scene load_steps=8 format=4 uid="uid://c5sr50exfcxxh"]
 
 [ext_resource type="PackedScene" uid="uid://caq1bd8cq7edg" path="res://scenes/player.tscn" id="1_rwgxs"]
 [ext_resource type="Texture2D" uid="uid://cecrjy21ac6aa" path="res://assets/floor.png" id="2_k0juu"]
 [ext_resource type="Shader" uid="uid://dpc3iqe2iv6o5" path="res://shaders/vignette.gdshader" id="3_4wyf3"]
+[ext_resource type="Script" uid="uid://odem6ogx4nxn" path="res://scripts/goal_manager.gd" id="4_k0juu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k0juu"]
 shader = ExtResource("3_4wyf3")
@@ -24,6 +25,7 @@ sources/0 = SubResource("TileSetAtlasSource_4wyf3")
 [node name="PostProcessing" type="CanvasLayer" parent="."]
 
 [node name="Vignette" type="ColorRect" parent="PostProcessing"]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_k0juu")
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,3 +52,6 @@ metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
+
+[node name="GoalManager" type="Node2D" parent="Player"]
+script = ExtResource("4_k0juu")
