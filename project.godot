@@ -27,7 +27,8 @@ window/size/borderless=true
 folder_colors={
 "res://assets/": "red",
 "res://scenes/": "purple",
-"res://scripts/": "green"
+"res://scripts/": "green",
+"res://shaders/": "teal"
 }
 
 [input]
