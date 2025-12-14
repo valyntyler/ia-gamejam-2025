@@ -2,28 +2,31 @@ extends Node2D
 
 @onready var vignette: ColorRect = %Vignette
 
-var target: float
-var perc: float:
-	set(value):
-		perc = value
-		vignette.material.set("shader_parameter/outer_radius", value)
+@export var goal: Node2D
+@export var max_distance: float
 
 
-func lerp_vignette(weight: float):
-	perc = lerp(perc, target, weight)
-	print(perc)
-
-
-func _ready() -> void:
-	perc = 0.0
-
-
-func _process(delta: float) -> void:
-	lerp_vignette(delta)
+func fade_in():
 	if (
 		Input.is_action_pressed("move_left")
 		|| Input.is_action_pressed("move_right")
 		|| Input.is_action_pressed("move_up")
 		|| Input.is_action_pressed("move_down")
 	):
-		target = 1
+		pass
+		# lerp_target = 1
+
+
+func _ready() -> void:
+	# lerp_perc = 0.0
+	max_distance = position.distance_to(goal.position)
+
+
+func _process(delta: float) -> void:
+	# lerp_target = position.distance_to(goal.position) / max_distance
+	pass
+
+
+func _unhandled_key_input(event):
+	if event.is_pressed():
+		pass

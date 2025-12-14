@@ -1,15 +1,10 @@
 [gd_scene load_steps=8 format=4 uid="uid://c5sr50exfcxxh"]
 
+[ext_resource type="PackedScene" uid="uid://dkebfbd2ypc5t" path="res://scenes/vignette.tscn" id="1_71j4m"]
 [ext_resource type="PackedScene" uid="uid://caq1bd8cq7edg" path="res://scenes/player.tscn" id="1_rwgxs"]
+[ext_resource type="Texture2D" uid="uid://ms1qn355236l" path="res://assets/icon.svg" id="2_4wyf3"]
 [ext_resource type="Texture2D" uid="uid://cecrjy21ac6aa" path="res://assets/floor.png" id="2_k0juu"]
-[ext_resource type="Shader" uid="uid://dpc3iqe2iv6o5" path="res://shaders/vignette.gdshader" id="3_4wyf3"]
 [ext_resource type="Script" uid="uid://odem6ogx4nxn" path="res://scripts/goal_manager.gd" id="4_k0juu"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k0juu"]
-shader = ExtResource("3_4wyf3")
-shader_parameter/alpha = 1.0
-shader_parameter/inner_radius = 0.0
-shader_parameter/outer_radius = 1.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wyf3"]
 texture = ExtResource("2_k0juu")
@@ -24,17 +19,8 @@ sources/0 = SubResource("TileSetAtlasSource_4wyf3")
 
 [node name="PostProcessing" type="CanvasLayer" parent="."]
 
-[node name="Vignette" type="ColorRect" parent="PostProcessing"]
+[node name="Vignette" parent="PostProcessing" instance=ExtResource("1_71j4m")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_k0juu")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-metadata/_edit_lock_ = true
 
 [node name="Background" type="ParallaxBackground" parent="."]
 
@@ -51,7 +37,13 @@ metadata/_edit_lock_ = true
 [node name="Player" parent="." instance=ExtResource("1_rwgxs")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(4, 4)
+zoom = Vector2(1.25, 1.25)
 
-[node name="GoalManager" type="Node2D" parent="Player"]
+[node name="GoalManager" type="Node2D" parent="Player" node_paths=PackedStringArray("goal")]
 script = ExtResource("4_k0juu")
+goal = NodePath("../../Icon")
+max_distance = 5000.0
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(1661, 953)
+texture = ExtResource("2_4wyf3")
