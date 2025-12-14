@@ -21,7 +21,6 @@ func hide_all():
 
 
 func _on_player_move() -> void:
-	print("ho")
 	if Input.is_action_pressed("move_left"):
 		current = left
 	elif Input.is_action_pressed("move_right"):
@@ -34,7 +33,6 @@ func _on_player_move() -> void:
 
 
 func _on_player_stop() -> void:
-	print("hi")
 	if Input.is_action_pressed("move_left"):
 		current = left
 	elif Input.is_action_pressed("move_right"):
