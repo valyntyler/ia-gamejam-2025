@@ -1,4 +1,6 @@
-extends AnimatedSprite2D
+extends Node2D
+
+@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var move_speed := 1
 @export var threshold := 0.5
@@ -24,15 +26,15 @@ func get_move_axes() -> Vector2:
 
 func animate_move():
 	if abs(move.x) >= threshold:
-		play("walk_h")
+		anim.play("walk_h")
 		if move.x > 0:
-			flip_h = true
+			anim.flip_h = true
 		else:
-			flip_h = false
+			anim.flip_h = false
 	elif abs(move.y) >= threshold:
-		play("walk_v")
+		anim.play("walk_v")
 	else:
-		play("idle")
+		anim.play("idle")
 
 
 func move_player(delta: float):

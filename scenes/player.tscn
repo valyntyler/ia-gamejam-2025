@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://caq1bd8cq7edg"]
+[gd_scene load_steps=4 format=3 uid="uid://caq1bd8cq7edg"]
 
 [ext_resource type="SpriteFrames" uid="uid://dnd8gmnhbvw3m" path="res://assets/player/anim-player.tres" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://cogyd38my1n14" path="res://assets/player/shadow.png" id="2_qhqgy"]
 [ext_resource type="Script" uid="uid://b6gu4ugeyix4c" path="res://scripts/player.gd" id="4_dqkch"]
 
-[node name="Player" type="AnimatedSprite2D"]
+[node name="Player" type="Node2D"]
 texture_filter = 1
+script = ExtResource("4_dqkch")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+texture = ExtResource("2_qhqgy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_g2els")
 animation = &"idle"
-script = ExtResource("4_dqkch")

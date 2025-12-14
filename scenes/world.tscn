@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c5sr50exfcxxh"]
 
 [ext_resource type="PackedScene" uid="uid://caq1bd8cq7edg" path="res://scenes/player.tscn" id="1_rwgxs"]
-[ext_resource type="Texture2D" uid="uid://ms1qn355236l" path="res://assets/icon.svg" id="2_4wyf3"]
+[ext_resource type="Texture2D" uid="uid://cecrjy21ac6aa" path="res://assets/floor.png" id="2_k0juu"]
 [ext_resource type="Shader" uid="uid://dpc3iqe2iv6o5" path="res://shaders/vignette.gdshader" id="3_4wyf3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k0juu"]
@@ -11,16 +11,6 @@ shader_parameter/inner_radius = 0.0
 shader_parameter/outer_radius = 1.0
 
 [node name="World" type="Node2D"]
-
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(48, -50.000004)
-scale = Vector2(0.2890625, 0.2890625)
-texture = ExtResource("2_4wyf3")
-
-[node name="Player" parent="." instance=ExtResource("1_rwgxs")]
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -33,3 +23,17 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -2052.0
+offset_top = -1576.0
+offset_right = -2.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_k0juu")
+stretch_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("1_rwgxs")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(4, 4)
