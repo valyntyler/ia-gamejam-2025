@@ -1,5 +1,5 @@
 @tool
-class_name SlideShow
+class_name Slideshow
 extends Node
 
 @export var lock := true
@@ -19,10 +19,11 @@ func lock_slides():
 	var count = get_child_count()
 	for i in range(0, count):
 		var child = children[i]
-		if i == index:
-			child.visible = true
-		else:
-			child.visible = false
+		if child is Control:
+			if i == index:
+				child.visible = true
+			else:
+				child.visible = false
 
 
 func _process(_delta: float) -> void:
