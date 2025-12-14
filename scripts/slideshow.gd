@@ -28,8 +28,3 @@ func lock_slides():
 
 func _process(_delta: float) -> void:
 	lock_slides()
-
-
-func _unhandled_key_input(event):
-	if event.is_pressed():
-		index += 1
