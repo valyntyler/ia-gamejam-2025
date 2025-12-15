@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=4 uid="uid://c5sr50exfcxxh"]
+[gd_scene load_steps=11 format=4 uid="uid://c5sr50exfcxxh"]
 
 [ext_resource type="PackedScene" uid="uid://dkebfbd2ypc5t" path="res://scenes/vignette.tscn" id="1_71j4m"]
 [ext_resource type="Script" uid="uid://beff5khvnucdp" path="res://scripts/world.gd" id="1_qfnet"]
 [ext_resource type="PackedScene" uid="uid://caq1bd8cq7edg" path="res://scenes/player.tscn" id="1_rwgxs"]
 [ext_resource type="Texture2D" uid="uid://cecrjy21ac6aa" path="res://assets/floor.png" id="2_k0juu"]
+[ext_resource type="Script" uid="uid://70r7f8q0wqmv" path="res://scripts/whiteout.gd" id="3_4mrxx"]
 [ext_resource type="Script" uid="uid://odem6ogx4nxn" path="res://scripts/goal_manager.gd" id="4_k0juu"]
 [ext_resource type="PackedScene" uid="uid://bqhf3dvdsiu2c" path="res://scenes/person.tscn" id="6_qfnet"]
-[ext_resource type="Script" path="res://scripts/person.gd" id="7_i7141"]
+[ext_resource type="Script" uid="uid://375t7p7b8r4i" path="res://scripts/person.gd" id="7_i7141"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wyf3"]
 texture = ExtResource("2_k0juu")
@@ -25,6 +26,16 @@ script = ExtResource("1_qfnet")
 [node name="Vignette" parent="PostProcessing" instance=ExtResource("1_71j4m")]
 unique_name_in_owner = true
 outer_radius = 1.0
+
+[node name="Whiteout" type="ColorRect" parent="PostProcessing"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("3_4mrxx")
+target_opacity = null
 
 [node name="Background" type="ParallaxBackground" parent="."]
 
